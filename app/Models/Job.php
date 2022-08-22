@@ -9,7 +9,7 @@ class Job extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'job_title','company','logo','tags','email','location','company_site','description',
+        'job_title','company','user_id','logo','tags','email','location','company_site','description',
     ];
     public function scopeFilter($query,array $filters){
 
@@ -27,5 +27,9 @@ class Job extends Model
             $query->orWhere('tags', 'like', '%'.request('search').'%');
         }
 
+    }
+
+    public function user(){
+        return $this->hasMany(Job::class , 'user_id');
     }
 }

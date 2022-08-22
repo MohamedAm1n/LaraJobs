@@ -36,14 +36,16 @@
                     <p>welcome {{ auth()->user()->name }}</p>
                 </li>
                 <li>
-                    <a href="" class="hover:text-laravel"> manage Jobs</a
-                    >
+                    
+                    <a href="" class="hover:text-laravel"> 
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        manage Jobs</a>
                 </li>
                 <li>
                     <form action="{{ route('logout') }}" method="GET">
                         @csrf
                         <button type="submit">
-                            logout
+                             <i class="fa-solid fa-right-from-bracket"></i>   logout
                         </button>
                     </form>
                 </li>

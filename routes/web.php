@@ -17,21 +17,21 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
+
 Route::get('/', [JobController::class , 'index'])->name('index');
-
-
-Route::prefix('job/')->middleware('auth')->group(function(){
-    Route::get('create', [JobController::class , 'create'])->name('create');
-    Route::post('job', [JobController::class , 'store'])->name('store');
-    Route::get('{job}/edit', [JobController::class , 'edit'])->name('edit');
-    Route::post('{job}', [JobController::class , 'update'])->name('update');
-    Route::post('{job}/destroy', [JobController::class , 'destroy'])->name('destroy');
-    
-});
 Route::get('/details/{id}', [JobController::class , 'show'])->name('show');
-// Route::post('/manage-jobs', [UserController::class,'manage'])->name('manage');
 
-Route::get('/register', [UserController::class,'create'])->name('register');
+Route::prefix('/')->middleware('auth')->group(function(){
+        Route::get('/create', [JobController::class , 'create'])->name('create');
+        Route::post('/job', [JobController::class , 'store'])->name('store');
+        Route::get('/{job}/edit', [JobController::class , 'edit'])->name('edit');
+        Route::post('/{job}', [JobController::class , 'update'])->name('update');
+        Route::post('/{job}/destroy', [JobController::class , 'destroy'])->name('destroy');
+        Route::get('/manage-jobs', [JobController::class,'manage'])->name('manage');
+
+});
+
+Route::get('/register', [UserController::class,'create'])->name('register')->middleware('guest');
 Route::post('/register', [UserController::class,'store'])->name('register_user');
 Route::get('/users/login',[UserController::class,'login'])->name('login');
 Route::post('/users/authenticate',[UserController::class,'authenticate'])->name('authenticate');

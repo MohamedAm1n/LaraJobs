@@ -16,6 +16,7 @@ class JobController extends Controller
      */
     public function index()
     {
+
         $jobs = Job::latest()->filter(request(['tag','search']))->simplePaginate(4);
         return view('jobs.index',['jobs'=>$jobs]);
 
@@ -49,6 +50,7 @@ class JobController extends Controller
             'company_site'=>['required',Rule::unique('jobs','company_site')],
             'description'=>'required'
         ]);
+        $add_job['user_id'] = auth()->id();
         if($request->has('logo')){
             $add_job['logo'] = $request->file('logo')->store('logos', 'public');
         }
@@ -57,7 +59,12 @@ class JobController extends Controller
         
 
     }
-
+public function manage(Request $request)
+{
+    $id=auth()->user()->id;
+    $all_jobs=Job::where('user_id',$id)->get();
+        dd($all_jobs);
+}
     /**
      * Display the specified resource.
      *
