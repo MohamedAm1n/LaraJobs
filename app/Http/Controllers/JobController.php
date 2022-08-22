@@ -128,6 +128,6 @@ public function manage(Request $request)
     public function destroy(Job $job)
     {
         $job->delete();
-        return back()->with('message', 'Job Deleted.');
+        return redirect(route('manage'))->with('message', 'Job Deleted.');
     }
 }
