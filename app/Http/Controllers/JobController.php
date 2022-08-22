@@ -63,7 +63,8 @@ public function manage(Request $request)
 {
     $id=auth()->user()->id;
     $all_jobs=Job::where('user_id',$id)->get();
-        dd($all_jobs);
+        // dd($all_jobs);
+        return view('jobs.manage', ['all_jobs' => $all_jobs]);
 }
     /**
      * Display the specified resource.
@@ -127,6 +128,6 @@ public function manage(Request $request)
     public function destroy(Job $job)
     {
         $job->delete();
-        return redirect('/')->with('message', 'Job Deleted.');
+        return back()->with('message', 'Job Deleted.');
     }
 }

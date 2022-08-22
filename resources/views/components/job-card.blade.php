@@ -67,6 +67,9 @@
                     </div>
                 </div>
                 @auth
+                @if($job->user_id == auth()->user()->id)
+                    
+                
                 <x-card class="mt-4 p-2 flex space-x-6 text-center">
                     <button class="bg-green-500 text-white rounded-xl px-4 py-1 mr-1">
                         <a  href="{{ route('edit',$job->id) }}">Edit</a>
@@ -76,5 +79,6 @@
                         <button class="bg-red-500 text-white rounded-xl px-3 py-1 mr-1 " type="submit">Delete</button>
                     </form>
                 </x-card>
+                @endif
                 @endauth
             </div>

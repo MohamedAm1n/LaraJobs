@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     
-                    <a href="" class="hover:text-laravel"> 
+                    <a href="{{ route('manage') }}" class="hover:text-laravel"> 
                         <i class="fa-solid fa-pen-to-square"></i>
                         manage Jobs</a>
                 </li>
@@ -45,7 +45,8 @@
                     <form action="{{ route('logout') }}" method="GET">
                         @csrf
                         <button type="submit">
-                             <i class="fa-solid fa-right-from-bracket"></i>   logout
+                            <i class="fa-solid fa-right-from-bracket"></i>  
+                            logout
                         </button>
                     </form>
                 </li>

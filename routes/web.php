@@ -26,8 +26,8 @@ Route::prefix('/')->middleware('auth')->group(function(){
         Route::post('/job', [JobController::class , 'store'])->name('store');
         Route::get('/{job}/edit', [JobController::class , 'edit'])->name('edit');
         Route::post('/{job}', [JobController::class , 'update'])->name('update');
-        Route::post('/{job}/destroy', [JobController::class , 'destroy'])->name('destroy');
         Route::get('/manage-jobs', [JobController::class,'manage'])->name('manage');
+        Route::post('/{job}/destroy', [JobController::class , 'destroy'])->name('destroy');
 
 });
 
