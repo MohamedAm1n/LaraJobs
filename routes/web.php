@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
@@ -30,6 +31,7 @@ Route::prefix('/')->middleware('auth')->group(function(){
         Route::post('/{job}/destroy', [JobController::class , 'destroy'])->name('destroy');
 
 });
+
 
 Route::get('/register', [UserController::class,'create'])->name('register')->middleware('guest');
 Route::post('/register', [UserController::class,'store'])->name('register_user');

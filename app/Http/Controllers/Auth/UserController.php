@@ -27,6 +27,7 @@ class UserController extends Controller
         auth()->login($user);
         return redirect('/')->with('success', "User Created And Logged In.");
     }
+
     public function login(){
         return view('auth.login');
     }
